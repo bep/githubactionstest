@@ -24,14 +24,11 @@ jobs:
         foo: [v1, v2]
     steps:
     - id: step1
-    - run: echo "::set-output name=myvar::${{ matrix.foo }}"
-    - run: echo "::set-output name=${{ matrix.foo }}::${{ matrix.foo }}"
+      run: echo "::set-output name=${{ matrix.foo }}::${{ matrix.foo }}"
   two:
     runs-on: ubuntu-latest
     needs: one
     steps:
-    - run: echo '${{ needs.one.outputs.myvar }}'
-    - run: echo '${{ toJson(needs.one.outputs.myvar) }}'
     - run: echo '${{ needs.one.outputs.v1var }}'
     - run: echo '${{ needs.one.outputs.v2var }}'
     - run: echo '${{ toJson(needs.one.outputs) }}'
