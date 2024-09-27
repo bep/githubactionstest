@@ -3,13 +3,8 @@
 name: CI
 
 on:
-  push:
-    tags:
-      - "*"
-    paths:
-      - README.md
-    branches:
-      - main
+  release:
+    types: [published]
 
 permissions:
   packages: write
